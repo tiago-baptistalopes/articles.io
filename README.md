@@ -8,7 +8,7 @@
   <div class="site">
     <header class="site-header site-header--centered">
       <h1 class="site-title">Tiago Baptista Lopes</h1>
-      <p class="site-sub">Essays, notes and reflections</p>
+      <p class="site-sub">Essays, notes and reflections. For no one.</p>
     </header>
 
   <main class="content" role="main">
