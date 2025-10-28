@@ -6,42 +6,46 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex" />
   <title>Not found</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    :root{color-scheme:light dark}
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
-    body{display:flex;flex-direction:column;align-items:stretch;min-height:100vh;background:#fff;color:#111}
-    main{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem}
-    .card{max-width:900px;width:100%;text-align:center;padding:2rem;border-radius:12px}
+    /* Minimal overrides to ensure a white background and consistent font
+       in case the site stylesheet isn't present. */
+    html,body{height:100%;margin:0}
+    body{background:#fff;color:#111;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    .site{min-height:100vh;display:flex;flex-direction:column}
+    .content{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem}
+    .notfound-card{text-align:center;max-width:900px;padding:2rem}
     h1{font-size:clamp(2rem,6vw,4rem);margin:0 0 .25rem}
-    p.lead{margin:.25rem 0 1rem;color:#555}
-    .image-wrap{height:220px;margin:1rem auto;border-radius:12px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;color:#9aa0a6}
-    a.home{display:inline-block;margin-top:.75rem;color:#0366d6;text-decoration:none}
-    footer{padding:1rem;text-align:center;border-top:1px solid #eee;font-size:.95rem;color:#666}
-    @media (prefers-color-scheme:dark){
-      body{background:#0b0b0c;color:#e6eef8}
-      .image-wrap{background:#0f1720;color:#9aa0a6}
-      footer{border-top-color:#111}
-    }
+    .lead{margin:.25rem 0 1rem;color:#555}
+    a{color:#0366d6;text-decoration:none}
+    .site-footer{padding:1rem;text-align:center;border-top:1px solid #eee;color:#666}
   </style>
 </head>
 <body>
-  <main>
-    <div class="card" role="main" aria-labelledby="notfound-title">
-      <h1 id="notfound-title">Not found</h1>
-      <p class="lead">The page you were looking for doesn't exist or has been moved.</p>
+  <div class="site">
+    <header class="site-header site-header--centered">
+      <h1 class="site-title">Not found</h1>
+      <p class="site-sub">The page you were looking for doesn't exist or has been moved.</p>
+    </header>
 
-      <div class="image-wrap" role="img" aria-label="Placeholder for 404 image">
-        <!-- Replace this placeholder with an actual image, for example:
-             <img src="/assets/404.png" alt="Not found" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:8px">
-        -->
-        <span>Image space</span>
+    <main class="content" role="main">
+      <div class="notfound-card" aria-labelledby="notfound-title">
+        <p class="lead">The page you were looking for doesn't exist or has been moved.</p>
+
+        <p><a href="home.html" title="Go back home">Return to homepage</a></p>
       </div>
+    </main>
 
-      <p><a class="home" href="/" title="Go back home">Return to homepage</a></p>
-    </div>
-  </main>
+    <footer class="site-footer">
+      <p>© <span id="year">2025</span> Tiago Baptista Lopes</p>
+    </footer>
+  </div>
 
-  <footer>Tiago Baptista Lopes @ 2025</footer>
+  <script>
+    // keep footer year consistent with home page
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 ```// filepath: /workspaces/tiago_blopes.github.io/404.html
