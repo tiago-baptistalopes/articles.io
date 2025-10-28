@@ -33,9 +33,5 @@
       <p>© <span id="year">2025</span> Tiago Baptista Lopes</p>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
