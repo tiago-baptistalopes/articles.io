@@ -31,7 +31,7 @@
       <div class="notfound-card" aria-labelledby="notfound-title">
         <p class="lead">The page you were looking for doesn't exist or has been moved.</p>
 
-        <p><a href="README.md" title="Go back home">Return to homepage</a></p>
+        <p><a id="home-link" href="#" title="Go back home">Return to homepage</a></p>
       </div>
     </main>
 
@@ -44,6 +44,60 @@
     // keep footer year consistent with home page
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+    
+    // Try to locate the repository's home page (home.html) by probing up the
+    // path hierarchy. This handles cases where the 404 was served from a
+    // nested path (e.g. /repo/some/missing/page) so a plain relative link
+    // would not find the site root. On click we try progressively higher
+    // directories and navigate to the first existing `home.html` we find.
+    (function(){
+      const link = document.getElementById('home-link');
+      if (!link) return;
+
+      async function findHome(){
+        const parts = location.pathname.split('/').filter(Boolean);
+        // include the possibility of root-level home.html
+        for (let up = 0; up <= parts.length; up++){
+          const baseParts = parts.slice(0, parts.length - up);
+          const base = '/' + baseParts.join('/');
+          const url = (base === '/') ? location.origin + '/home.html' : location.origin + base + '/home.html';
+          try{
+            const res = await fetch(url, {method: 'HEAD'});
+            if (res.ok) return url;
+          }catch(e){
+            // ignore and try next
+          }
+        }
+        // fallback to site root
+        return location.origin + '/';
+      }
+
+      link.addEventListener('click', async function(e){
+        e.preventDefault();
+        const target = await findHome();
+
+        // If this page was opened by another window/tab (popup), navigate
+        // the opener to the target and close this window so the 404 handler
+        // doesn't remain open. Otherwise replace the current location so
+        // the 404 page is not left in history.
+        if (window.opener && !window.opener.closed) {
+          try {
+            window.opener.location.replace(target);
+            // Attempt to close the current window. This will succeed for
+            // windows opened via script; if it fails the replace below will
+            // still navigate this tab.
+            window.close();
+            return;
+          } catch (err) {
+            // ignore and fall back to replace
+          }
+        }
+
+        // Replace current history entry to avoid leaving the 404 page in
+        // the back/forward history.
+        location.replace(target);
+      });
+    })();
   </script>
 </body>
 </html>
