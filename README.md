@@ -17,7 +17,7 @@
 
    <ul class="post-list">
           <li class="post-list-item">
-            <a class="post-link" href="Articles/write-for-no-one/write-for-no-one.html">Write for no one</a>
+            <a class="post-link" href="articles/write-for-no-one/write-for-no-one.html">Write for no one</a>
             <span class="post-meta"> — <time datetime="2025-02-28">February 28, 2025</time></span>
           </li>
         </ul>
