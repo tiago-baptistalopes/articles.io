@@ -1,0 +1,80 @@
+:root{
+  --bg:#fafafa;
+  --card:#fff;
+  --text:#222;
+  --muted:#5a5a5a;
+  --accent:#0b5fff;
+  --max-width:60ch;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  padding:2rem 1rem;
+}
+
+.site{
+  max-width:var(--max-width);
+  margin:0 auto;
+  background:var(--card);
+  padding:2rem;
+  border-radius:10px;
+  box-shadow:0 6px 18px rgba(20,20,20,0.06);
+}
+
+.site-header{
+  margin-bottom:1.25rem;
+  text-align:left;
+}
+.site-title{
+  margin:0;
+  font-size:1.5rem;
+  letter-spacing:-0.02em;
+}
+.site-sub{
+  margin:0.25rem 0 0;
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+.essay-title{
+  margin-top:0;
+  font-size:1.25rem;
+}
+.byline{
+  margin:0.25rem 0 1rem;
+  color:var(--muted);
+  font-size:0.9rem;
+}
+
+.essay-body p{
+  margin:0 0 1rem;
+  font-size:1rem;
+  text-wrap:balance;
+}
+
+.site-footer{
+  margin-top:2rem;
+  text-align:center;
+  font-size:0.9rem;
+  color:var(--muted);
+}
+
+/* Print friendly */
+@media print{
+  body{background:white;padding:0}
+  .site{box-shadow:none;border-radius:0;padding:0.5in}
+}
+
+/* Small screens adjustments */
+@media (max-width:520px){
+  .site{padding:1.25rem}
+  .site-title{font-size:1.25rem}
+}
