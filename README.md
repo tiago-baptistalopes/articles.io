@@ -20,6 +20,10 @@
             <a class="post-link" href="articles/write-for-no-one/write-for-no-one.html">Write for no one</a>
             <span class="post-meta"> — <time datetime="2025-02-28">February 28, 2025</time></span>
           </li>
+          <li class="post-list-item">
+            <a class="post-link" href="articles/a-taller-shade/a-taller-shade.html">A taller shade for tomorrow</a>
+            <span class="post-meta"> — <time datetime="2025-03-30">March 30, 2025</time></span>
+          </li>
         </ul>
       </section>
     </main>
