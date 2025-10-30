@@ -30,8 +30,8 @@
     <footer class="site-footer">
       <p>© <span id="year">2025</span> Tiago Baptista Lopes</p>
     </footer>
-    <div style="text-align: center;">
-     <img src="penguin.png" alt="A penguin, if you may">
-    </div>
+  <div style="text-align: center;">
+   <img src="pinguino.png" alt="A penguin, if you may">
+  </div>
 </body>
 </html>
